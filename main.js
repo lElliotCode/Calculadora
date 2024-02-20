@@ -19,9 +19,13 @@ btns.forEach(btn => {
         }
         if(btn.id === 'equal'){
             try{
-                screen.textContent = (eval(screen.textContent)).toFixed(2);
-            } catch {
-                screen.textContent = 'Math Error'
+                screen.textContent = (eval(screen.textContent));
+                if(screen.textContent.includes('.') && screen.textContent.length > 8){
+                    screen.textContent = (eval(screen.textContent)).toFixed(2)
+                }
+                areResult = !areResult
+            } catch (e){
+                screen.textContent = e
             }
             return
         }
@@ -32,5 +36,7 @@ btns.forEach(btn => {
         } else {
             screen.textContent += pressBtn
         }
+
+
     })
 })
